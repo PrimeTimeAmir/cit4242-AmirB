@@ -15,4 +15,12 @@ public class CatalogueTest {
 
         assertEquals(3, books.size());
     }
+
+    @Test
+    void unknownAuthorReturnsEmptyList() {
+        BookSource source = new InMemoryBookSource();
+        Catalogue catalogue = new Catalogue(source);
+
+        assertEquals(List.of(), catalogue.titlesBy("Unknown Author"));
+    }
 }
